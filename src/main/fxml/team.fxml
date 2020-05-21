@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1246.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane layoutX="-2.0" layoutY="-2.0" prefHeight="832.0" prefWidth="1302.0" AnchorPane.bottomAnchor="-80.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-54.0" AnchorPane.topAnchor="-2.0">
+            <top>
+                <AnchorPane prefHeight="0.0" prefWidth="1238.0" BorderPane.alignment="CENTER" />
+            </top>
+         <left>
+                <AnchorPane prefHeight="738.0" prefWidth="1206.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <GridPane layoutX="14.0" layoutY="61.0" prefHeight="375.0" prefWidth="348.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="169.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="179.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="90.0" minHeight="6.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="   ID" wrappingWidth="65.77197265625">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textID" GridPane.columnIndex="1" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Name" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textName" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Age" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textAge" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Gender" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textGender" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Position" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textPosition" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Goals" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textGoals" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Fouls" GridPane.rowIndex="9">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                        <TextField fx:id="textNG" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  NG" wrappingWidth="65.77197265625" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textPK" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  PK" wrappingWidth="65.77197265625" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textOG" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  OG" wrappingWidth="65.77197265625" GridPane.rowIndex="8">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                                <TextField fx:id="textFouls" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Club" GridPane.rowIndex="10">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                                <TextField fx:id="textClub" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Height" GridPane.rowIndex="11">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="textHeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Weight" GridPane.rowIndex="12">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="textWeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                            </children>
+                        </GridPane>
+                        <Text fill="#0091ea" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Information: ">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Text>
+                        <TableView fx:id="playerTable" layoutX="485.0" layoutY="61.0" onMouseClicked="#setOnMouseClicked" prefHeight="599.0" prefWidth="759.0" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="485.0" AnchorPane.rightAnchor="-38.0" AnchorPane.topAnchor="61.0">
+                            <columns>
+                                <TableColumn fx:id="columnID" prefWidth="83.0" text="ID" />
+                                <TableColumn fx:id="columnName" minWidth="0.0" prefWidth="82.0" text="Name" />
+                                <TableColumn fx:id="columnPosition" prefWidth="85.0" text="Position" />
+                                <TableColumn fx:id="columnGoals" prefWidth="83.0" text="Goals" />
+                        <TableColumn fx:id="columnNG" prefWidth="77.0" text="NG" />
+                        <TableColumn fx:id="columnPK" prefWidth="78.0" text="PK" />
+                        <TableColumn fx:id="columnOG" prefWidth="82.0" text="OG" />
+                        <TableColumn fx:id="columnFouls" prefWidth="84.0" text="Fouls" />
+                            </columns>
+                        </TableView>
+                  <Button fx:id="teamAddBtn" layoutX="182.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#teamAddAction" prefHeight="27.0" prefWidth="64.0" style="-fx-background-color: #7f17ff" text="Add" textFill="WHITE" />
+                  <Button fx:id="teamDeleteBtn" layoutX="297.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#teamDeleteAction" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #f57c00" text="Delete" textFill="WHITE" />
+                  <Button id="UpdateBtn" fx:id="teamUpdateBtn" layoutX="485.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#teamUpdateAction" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: #3007ff;" text="Update" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                    </children>
+                </AnchorPane>
+         </left>
+        </BorderPane>
+    </children>
+</AnchorPane>

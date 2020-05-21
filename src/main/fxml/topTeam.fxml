@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="758.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane layoutX="29.0" layoutY="88.0" prefHeight="551.0" prefWidth="788.0">
+            <children>
+                <TableView fx:id="topTeamTable" layoutX="-2.0" layoutY="-5.0" prefHeight="556.0" prefWidth="826.0">
+                    <columns>
+                        <TableColumn fx:id="rankColumn" prefWidth="79.0" text="Rank" />
+                        <TableColumn fx:id="nameColumn" prefWidth="96.0" text="Team" />
+                        <TableColumn fx:id="playedColumn" prefWidth="77.0" text="Played" />
+                        <TableColumn fx:id="wonColumn" prefWidth="70.0" text="Won" />
+                        <TableColumn fx:id="drawnColumn" prefWidth="73.0" text="Drawn" />
+                        <TableColumn fx:id="lostColumn" prefWidth="65.0" text="Lost" />
+                  <TableColumn fx:id="gfColumn" prefWidth="69.0" text="GF" />
+                  <TableColumn fx:id="gaColumn" prefWidth="74.0" text="GA" />
+                  <TableColumn fx:id="gdColumn" prefWidth="81.0" text="GD" />
+                  <TableColumn fx:id="pointsColumn" prefWidth="76.0" text="Points" />
+                    </columns>
+                </TableView>
+            </children>
+        </AnchorPane>
+      <Text fill="#0091ea" layoutX="29.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TopTeam: ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>

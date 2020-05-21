@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="797.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.fxml.RecordBoard">
+   <children>
+      <AnchorPane layoutX="38.0" layoutY="34.0" prefHeight="747.0" prefWidth="920.0">
+         <children>
+            <TableView layoutX="17.0" layoutY="67.0" prefHeight="562.0" prefWidth="895.0">
+              <columns>
+                <TableColumn prefWidth="89.0" text="TeamA" />
+                <TableColumn prefWidth="83.0" text="TeamB" />
+                  <TableColumn prefWidth="102.0" text="Referee" />
+                  <TableColumn prefWidth="143.0" text="RefereeAssistantA" />
+                  <TableColumn prefWidth="130.0" text="RefereeAssistantB" />
+                  <TableColumn prefWidth="84.0" text="APoints" />
+                  <TableColumn prefWidth="69.0" text="BPoints" />
+                  <TableColumn prefWidth="108.0" text="Field" />
+                  <TableColumn prefWidth="86.0" text="Stage" />
+              </columns>
+            </TableView>
+            <Text fill="#0091ea" layoutX="17.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RecordBoard: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

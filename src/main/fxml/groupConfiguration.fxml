@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="885.0" prefWidth="1399.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane layoutX="31.0" layoutY="58.0" prefHeight="396.0" prefWidth="306.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="168.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="138.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="70.0" minHeight="0.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="135.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GroupName" wrappingWidth="120.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RefereeA" wrappingWidth="120.0" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RefereeB" wrappingWidth="120.0" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RefereeAssistantA" wrappingWidth="160.0" GridPane.rowIndex="3">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RefereeAssistantB" wrappingWidth="160.0" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RefereeAssistantC" wrappingWidth="160.0" GridPane.rowIndex="5">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RefereeAssistantD" wrappingWidth="160.0" GridPane.rowIndex="6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FieldA" wrappingWidth="160.0" GridPane.rowIndex="7">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FieldB" wrappingWidth="160.0" GridPane.rowIndex="8">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField id="setGroupName" fx:id="setGroupName" GridPane.columnIndex="1" />
+            <TextField id="setRefereeA" fx:id="setRefereeA" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField id="setRefereeB" fx:id="setRefereeB" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="setRefereeAssistantA" fx:id="setRefereeAssistantA" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField id="setRefereeAssistantB" fx:id="setRefereeAssistantB" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField id="setRefereeAssistantC" fx:id="setRefereeAssistantC" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField id="setRefereeAssistantD" fx:id="setRefereeAssistantD" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField id="setFieldA" fx:id="setFieldA" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField id="setFieldB" fx:id="setFieldB" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+         </children>
+      </GridPane>
+      <Text layoutX="31.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <TableView fx:id="configTableView" layoutX="441.0" layoutY="59.0" prefHeight="691.0" prefWidth="953.0">
+        <columns>
+          <TableColumn fx:id="columnName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="columnFirstPlace" prefWidth="75.0" text="First_Place" />
+            <TableColumn fx:id="columnSecondPlace" prefWidth="89.0" text="Second_Place" />
+            <TableColumn fx:id="columnThirdPlace" prefWidth="88.0" text="Third_Place" />
+            <TableColumn fx:id="columnRefereeA" prefWidth="90.0" text="RefereeA" />
+            <TableColumn fx:id="columnRefereeB" prefWidth="85.0" text="RefereeB" />
+            <TableColumn fx:id="columnRefereeAssistantA" minWidth="4.0" text="AssistantA" />
+            <TableColumn fx:id="columnRefereeAssistantB" prefWidth="77.0" text="AssistantB" />
+            <TableColumn fx:id="columnRefereeAssistantC" text="AssistantC" />
+            <TableColumn fx:id="columnRefereeAssistantD" text="AssistantD" />
+            <TableColumn fx:id="columnFieldA" prefWidth="63.0" text="FieldA" />
+            <TableColumn fx:id="columnFieldB" prefWidth="68.0" text="FieldB" />
+        </columns>
+      </TableView>
+      <Button fx:id="addGroupBtn" onMouseClicked="#addGroupAction" id="AddGroupBtn" layoutX="157.0" layoutY="488.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #1ff9ff;" text="Add" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteGroupBtn" onMouseClicked="#deleteGroupAction" id="DeleteGroupBtn" layoutX="267.0" layoutY="488.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #2343ff;" text="Delete" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="groupPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1246.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane layoutX="-2.0" layoutY="-2.0" prefHeight="832.0" prefWidth="1302.0" AnchorPane.bottomAnchor="-80.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-54.0" AnchorPane.topAnchor="-2.0">
+            <top>
+                <AnchorPane prefHeight="0.0" prefWidth="1238.0" BorderPane.alignment="CENTER" />
+            </top>
+         <left>
+                <AnchorPane prefHeight="738.0" prefWidth="1206.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Text fill="#0091ea" layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group Information: ">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Text>
+                        <GridPane layoutX="14.0" layoutY="61.0" prefHeight="271.0" prefWidth="348.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Name">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="textName" disable="false" GridPane.columnIndex="1" />
+                                <TextField fx:id="textPlayed" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Drawn" GridPane.rowIndex="3">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="textWon" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="GD" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="textDrawn" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Lost" GridPane.rowIndex="4">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="textLost" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="GF" GridPane.rowIndex="5">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="textGF" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="GA" GridPane.rowIndex="6">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="textGA" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Won" GridPane.rowIndex="2">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Played" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Points" GridPane.rowIndex="8">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textGD" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="textPoints" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                            </children>
+                        </GridPane>
+                        <Button id="AddBtn" fx:id="groupAddBtn" layoutX="181.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#groupAddAction" prefHeight="29.0" prefWidth="66.0" style="-fx-background-color: #7f17ff;" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="453.0">
+                            <font>
+                                <Font size="15.0" />
+                            </font></Button>
+                  <Button id="BestTeamBtn" fx:id="showBestTeam" layoutX="61.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#showBestTeamBoard" prefHeight="29.0" prefWidth="66.0" style="-fx-background-color: #7f1700;" text="SBT" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button id="BestShotterBtn" fx:id="showBestShotter" layoutX="422.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#showBestShotterBoard" prefHeight="29.0" prefWidth="66.0" style="-fx-background-color: #2f17ff;" text="SBS" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button id="DeleteBtn" fx:id="groupDeleteBtn" layoutX="294.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#groupDeleteAction" prefHeight="29.0" prefWidth="68.0" style="-fx-background-color: #f57c00;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                        <TableView fx:id="tableUser" layoutX="545.0" layoutY="61.0" onMouseClicked="#setOnMouseClicked" prefHeight="613.0" prefWidth="704.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="545.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="61.0">
+                            <columns>
+                                <TableColumn fx:id="columnID" prefWidth="60.0" text="ID" />
+                                <TableColumn fx:id="columnName" prefWidth="97.0" text="Name" />
+                                <TableColumn fx:id="columnPlayed" prefWidth="62.0" text="Played" />
+                                <TableColumn fx:id="columnWon" prefWidth="66.0" text="Won" />
+                                <TableColumn fx:id="columnDrawn" prefWidth="64.0" text="Drawn" />
+                                <TableColumn fx:id="columnLost" prefWidth="55.0" text="Lost" />
+                                <TableColumn fx:id="columnGF" prefWidth="53.0" text="GF" />
+                                <TableColumn fx:id="columnGA" prefWidth="62.0" text="GA" />
+                                <TableColumn fx:id="columnGD" prefWidth="64.0" text="GD" />
+                                <TableColumn fx:id="columnPoints" prefWidth="137.0" text="Points" />
+                            </columns>
+                        </TableView>
+                  <Button id="UpdateBtn" fx:id="groupUpdateBtn" layoutX="545.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#groupUpdateAction" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #6732ff;" text="Update" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button id="showScheduleBtn" fx:id="scheduleBtn" layoutX="687.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#arrangeScheduleAndShow" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: #987322;" text="Schedule" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button id="renewBtn" fx:id="renewBtn" layoutX="838.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#renewGroupAction" prefHeight="34.0" prefWidth="99.0" style="-fx-background-color: #4234ff;" text="Renew" textFill="#fcfafa">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button id="clearBtn" fx:id="clearBtn" onMouseClicked="#clearAllDataAction" layoutX="977.0" layoutY="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #3279ff;" text="Clear" textFill="#fffefe">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                    </children>
+                </AnchorPane>
+         </left>
+        </BorderPane>
+    </children>
+</AnchorPane>
