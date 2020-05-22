@@ -30,18 +30,6 @@ public class Player {
      */
     private String name;
 
-    /**
-     * 所属队伍的名字
-     */
-    private String team;
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
 
     /**
      * 球员年龄

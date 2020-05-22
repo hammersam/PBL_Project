@@ -9,11 +9,9 @@ module pbl.project {
     requires javafx.web;
     requires java.sql;
 
-    exports main.css;
     exports main.dao;
     exports main;
 
-    opens main.css;
     opens main.dao;
     opens main;
 

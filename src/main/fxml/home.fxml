@@ -34,7 +34,6 @@
             <Button fx:id="btnGirl" mnemonicParsing="false" onAction="#goToGirl" prefHeight="195.0" prefWidth="273.0" text="GroupC" GridPane.rowIndex="1" />
             <Button id="GroupConfigurations" fx:id="groupConfigBtn" mnemonicParsing="false" onAction="#configGroupDetail" prefHeight="220.0" prefWidth="272.0" text="League" GridPane.columnIndex="2" />
             <Button fx:id="btnAdult" mnemonicParsing="false" onAction="#goToAdult" prefHeight="196.0" prefWidth="271.0" text="GroupD" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="196.0" prefWidth="255.0" text="Teams" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="btnBoyB" mnemonicParsing="false" onAction="#goToBoyB" prefHeight="212.0" prefWidth="279.0" text="GroupB" GridPane.columnIndex="1" />
          </children>
       </GridPane>

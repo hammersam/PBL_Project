@@ -22,7 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class GroupConfigurationController implements Initializable {
+public class LeagueController implements Initializable {
 
     private String league;
 
@@ -36,9 +36,6 @@ public class GroupConfigurationController implements Initializable {
         this.league = league;
     }
 
-    public GroupConfigurationController(String league) {
-        setLeague(league);
-    }
 
     /**
      * TextField {{{
@@ -369,6 +366,8 @@ public class GroupConfigurationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        setLeague("League");
+
         dc = new DBConnection();
 
         try {
@@ -376,7 +375,7 @@ public class GroupConfigurationController implements Initializable {
 
             Connection connection = dc.connection();
             /**
-             * 如果数据库中没有Group表，则创建一个
+             * 如果数据库中没有league表，则创建一个
              */
             String sql = "CREATE TABLE IF NOT EXISTS `" + league + "` (" +
                     "`ID` INT UNSIGNED AUTO_INCREMENT," +

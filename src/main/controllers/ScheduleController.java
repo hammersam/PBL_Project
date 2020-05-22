@@ -91,6 +91,10 @@ public class ScheduleController implements Initializable {
         setGroup(group);
     }
 
+    public ScheduleController(ObservableList<Record> list) {
+        setList(list);
+    }
+
 
 
     public void doGroupMatch() {
@@ -132,24 +136,50 @@ public class ScheduleController implements Initializable {
                 System.out.println("\n" + group.getName() + "  " + teamAName);
                 System.out.println(group.getName() + "   " + teamBName);
 
-                int aPoints = 0, bPoints = 0;
+                int aPoints = teamAInfo.getInt(10), bPoints = teamBInfo.getInt(10), updateWonA = teamAInfo.getInt(4), updateWonB = teamBInfo.getInt(4),
+                        updateDrawnA = teamAInfo.getInt(5), updateDrawnB = teamBInfo.getInt(5), updateLostA = teamAInfo.getInt(6), updateLostB = teamBInfo.getInt(6);
 
                 if (TeamAGoals > TeamBGoals) {
-                    aPoints = 3;
+
+                    aPoints += 3;
+                    updateWonA += 1;
+                    updateLostB += 1;
+
                 } else if (TeamAGoals < TeamBGoals) {
-                    bPoints = 3;
+
+                    bPoints += 3;
+                    updateLostA += 1;
+                    updateWonB += 1;
+
                 } else {
-                    aPoints = bPoints = 1;
+
+                    aPoints += 1;
+                    bPoints += 1;
+                    updateDrawnA += 1;
+                    updateDrawnB += 1;
                 }
 
-                String updateTeamARecord = "UPDATE `" + group.getName() + "` SET Played = " + (teamAInfo.getInt(3) + 1) + ", Won = " + (teamAInfo.getInt(4) + (aPoints == 3 ? 1 : 0)) + ", Drawn = " + (teamAInfo.getInt(5) + (aPoints == 1 ? 1 : 0)) +
-                        ", Lost = " + (teamAInfo.getInt(6) + (aPoints == 0 ? 1 : 0)) + ", GF = " + (teamAInfo.getInt(7) + TeamAGoals) + ", GA = " +
-                        (teamAInfo.getInt(8) + TeamBGoals) + ", GD = " + (teamAInfo.getInt(9) + TeamAGoals - TeamBGoals) + ", Points = " + (teamAInfo.getInt(10) + aPoints) +
+                int updatePlayedA = teamAInfo.getInt(3) + 1;
+                int updatePlayedB = teamBInfo.getInt(3) + 1;
+
+                int updateGFA = teamAInfo.getInt(7) + TeamAGoals;
+                int updateGAA = teamAInfo.getInt(8) + TeamBGoals;
+                int updateGDA = teamAInfo.getInt(9) + TeamAGoals - TeamBGoals;
+
+                int updateGFB = teamBInfo.getInt(7) + TeamBGoals;
+                int updateGAB = teamBInfo.getInt(8) + TeamAGoals;
+                int updateGDB = teamBInfo.getInt(9) + TeamBGoals - TeamAGoals;
+
+
+
+                String updateTeamARecord = "UPDATE `" + group.getName() + "` SET Played = " + updatePlayedA + ", Won = " + updateWonA + ", Drawn = " + updateDrawnA +
+                        ", Lost = " + updateLostA + ", GF = " + updateGFA + ", GA = " +
+                        updateGAA + ", GD = " + updateGDA + ", Points = " + aPoints +
                         " WHERE Name = '" + scheduleRS.getString(4) + "'";
 
-                String updateTeamBRecord = "UPDATE `" + group.getName() + "` SET Played = " + (teamBInfo.getInt(3) + 1) + ", Won = " + (teamBInfo.getInt(4) + (bPoints == 3 ? 1 : 0)) + ", Drawn = " + (teamBInfo.getInt(5) + (bPoints == 1 ? 1 : 0)) +
-                        ", Lost = " + (teamBInfo.getInt(6) + (bPoints == 0 ? 1 : 0)) + ", GF = " + (teamBInfo.getInt(7) + TeamBGoals) + ", GA = " +
-                        (teamBInfo.getInt(8) + TeamAGoals) + ", GD = " + (teamBInfo.getInt(9) + TeamBGoals - TeamAGoals) + ", Points = " + (teamAInfo.getInt(10) + bPoints) +
+                String updateTeamBRecord = "UPDATE `" + group.getName() + "` SET Played = " + updatePlayedB + ", Won = " + updateWonB + ", Drawn = " + updateDrawnB +
+                        ", Lost = " + updateLostB + ", GF = " + updateGFB + ", GA = " +
+                        updateGAB + ", GD = " + updateGDB + ", Points = " + bPoints +
                         " WHERE Name = '" + scheduleRS.getString(7) + "'";
 
                 PreparedStatement updataTeamA = connection.prepareStatement(updateTeamARecord);
@@ -255,6 +285,13 @@ public class ScheduleController implements Initializable {
     }
 
     public void doKnockoff() {
+
+        /**
+         * 进行淘汰赛（决出一二三名）
+         */
+        // String
+
+
 
     }
 

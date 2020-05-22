@@ -84,8 +84,7 @@ public class Home implements Initializable {
             /**
              * 生成控制器
              */
-            Button button = (Button) event.getSource();
-            GroupConfigurationController controller = new GroupConfigurationController(button.getText());
+            LeagueController controller = new LeagueController();
             loader.setController(controller);
 
             /**

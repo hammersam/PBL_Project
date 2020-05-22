@@ -138,7 +138,7 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button id="showScheduleBtn" fx:id="scheduleBtn" layoutX="687.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#arrangeScheduleAndShow" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: #987322;" text="Schedule" textFill="WHITE">
+                  <Button id="NewScheduleBtn" fx:id="scheduleBtn" layoutX="687.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#arrangeScheduleAndShow" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #987322;" text="NewSchedule" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -148,7 +148,17 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button id="clearBtn" fx:id="clearBtn" onMouseClicked="#clearAllDataAction" layoutX="977.0" layoutY="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #3279ff;" text="Clear" textFill="#fffefe">
+                  <Button id="clearBtn" fx:id="clearBtn" layoutX="977.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#clearAllDataAction" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #3279ff;" text="Clear" textFill="#fffefe">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button id="showSchedule" fx:id="showScheduleBtn" layoutX="362.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#showScheduleAction" prefHeight="34.0" prefWidth="137.0" style="-fx-background-color: #4234ff;" text="ShowSchedule" textFill="#fffbfb">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button id="registerBtn" fx:id="registerBtn" onMouseClicked="#goToRegisterPage" layoutX="214.0" layoutY="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: #9809ff;" text="Register" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>

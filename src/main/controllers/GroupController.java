@@ -1,8 +1,8 @@
 package main.controllers;
 
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -126,6 +126,11 @@ public class GroupController implements Initializable {
     @FXML
     private Button renewBtn;
 
+    @FXML
+    private Button showScheduleBtn;
+
+    @FXML
+    private Button registerBtn;
     /**
      * }}}
      *
@@ -646,35 +651,35 @@ public class GroupController implements Initializable {
             /**
              * 删除日程如果存在
              */
-            // String deleteScheduleSql = "DROP TABLE IF EXISTS `" + dbText + "Schedule`";
-            // PreparedStatement deletePstmt = connection.prepareStatement(deleteScheduleSql);
-            // deletePstmt.executeUpdate();
-            // deletePstmt.close();
+            String deleteScheduleSql = "DROP TABLE IF EXISTS `" + dbText + "Schedule`";
+            PreparedStatement deletePstmt = connection.prepareStatement(deleteScheduleSql);
+            deletePstmt.executeUpdate();
+            deletePstmt.close();
 
 
             /**
              * 创建日程表
              */
-            // String scheduleSql = "CREATE TABLE IF NOT EXISTS `" + dbText + "Schedule` (" +
-            //         "`ID` INT UNSIGNED AUTO_INCREMENT," +
-            //         "`Stage` VARCHAR(100) NOT NULL," +
-            //         "`Situation` VARCHAR(100) NOT NULL," +
-            //         "`TeamA` VARCHAR(100) NOT NULL," +
-            //         "`TeamAGoals` INT UNSIGNED," +
-            //         "`TeamBGoals` INT UNSIGNED," +
-            //         "`TeamB` VARCHAR(100) NOT NULL," +
-            //         "`Referee` VARCHAR(100) NOT NULL," +
-            //         "`RefereeAssistantA` VARCHAR(100) NOT NULL," +
-            //         "`RefereeAssistantB` VARCHAR(100) NOT NULL," +
-            //         "`Field` VARCHAR(100) NOT NULL, " +
-            //         "PRIMARY KEY ( `ID` )) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+            String scheduleSql = "CREATE TABLE IF NOT EXISTS `" + dbText + "Schedule` (" +
+                    "`ID` INT UNSIGNED AUTO_INCREMENT," +
+                    "`Stage` VARCHAR(100) NOT NULL," +
+                    "`Situation` VARCHAR(100) NOT NULL," +
+                    "`TeamA` VARCHAR(100) NOT NULL," +
+                    "`TeamAGoals` INT UNSIGNED," +
+                    "`TeamBGoals` INT UNSIGNED," +
+                    "`TeamB` VARCHAR(100) NOT NULL," +
+                    "`Referee` VARCHAR(100) NOT NULL," +
+                    "`RefereeAssistantA` VARCHAR(100) NOT NULL," +
+                    "`RefereeAssistantB` VARCHAR(100) NOT NULL," +
+                    "`Field` VARCHAR(100) NOT NULL, " +
+                    "PRIMARY KEY ( `ID` )) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
             /**
              * 执行scheduleSql语句（不获取ResultSet）
              */
-            // PreparedStatement createTablePstmt = connection.prepareStatement(scheduleSql);
-            // createTablePstmt.executeUpdate();
-            // createTablePstmt.close();
+            PreparedStatement createTablePstmt = connection.prepareStatement(scheduleSql);
+            createTablePstmt.executeUpdate();
+            createTablePstmt.close();
 
 
             /**
@@ -770,6 +775,52 @@ public class GroupController implements Initializable {
     }
 
 
+    public void showScheduleAction() {
+
+        try {
+
+            ObservableList<Record> list = FXCollections.observableArrayList();
+            Connection connection = dc.connection();
+            /**
+             * 获取数据库中record数据
+             */
+            String getRecordSql = "SELECT * FROM `" + dbText + "Schedule` WHERE ID >= 1";
+            ResultSet rs = connection.createStatement().executeQuery(getRecordSql);
+
+            while (rs.next()) {
+
+                Team teamA = new Team(rs.getString(4));
+                Team teamB = new Team(rs.getString(7));
+                Referee referee = new Referee(rs.getString(8), new RefereeAssistant(rs.getString(9)), new RefereeAssistant(rs.getString(10)));
+                Field field = new Field(rs.getString(11));
+
+                /**
+                 * 创建Record实例并输入进list中以便显示
+                 */
+                list.add(new Record(teamA, teamB, referee, referee.getRefereeAssistantA(), referee.getRefereeAssistantB(), rs.getInt(5), rs.getInt(6),
+                        field, rs.getString(2), rs.getString(3)));
+
+
+            }
+
+            ScheduleController controller = new ScheduleController(list);
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/schedule.fxml"));
+            loader.setController(controller);
+
+            Parent root = (Parent) loader.load();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (SQLException | IOException e) {
+
+            e.printStackTrace();
+
+        }
+    }
+
+
     @FXML
     public void renewGroupAction() {
         try {
@@ -820,6 +871,44 @@ public class GroupController implements Initializable {
                 clearTeamPstmt.close();
 
             }
+
+
+            /**
+             * 删除日程如果存在
+             */
+            String deleteScheduleSql = "DROP TABLE IF EXISTS `" + dbText + "Schedule`";
+            PreparedStatement deletePstmt = connection.prepareStatement(deleteScheduleSql);
+            deletePstmt.executeUpdate();
+            deletePstmt.close();
+
+
+            /**
+             * 创建日程表
+             */
+            String scheduleSql = "CREATE TABLE IF NOT EXISTS `" + dbText + "Schedule` (" +
+                    "`ID` INT UNSIGNED AUTO_INCREMENT," +
+                    "`Stage` VARCHAR(100) NOT NULL," +
+                    "`Situation` VARCHAR(100) NOT NULL," +
+                    "`TeamA` VARCHAR(100) NOT NULL," +
+                    "`TeamAGoals` INT UNSIGNED," +
+                    "`TeamBGoals` INT UNSIGNED," +
+                    "`TeamB` VARCHAR(100) NOT NULL," +
+                    "`Referee` VARCHAR(100) NOT NULL," +
+                    "`RefereeAssistantA` VARCHAR(100) NOT NULL," +
+                    "`RefereeAssistantB` VARCHAR(100) NOT NULL," +
+                    "`Field` VARCHAR(100) NOT NULL, " +
+                    "PRIMARY KEY ( `ID` )) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
+            /**
+             * 执行scheduleSql语句（不获取ResultSet）
+             */
+            PreparedStatement createTablePstmt = connection.prepareStatement(scheduleSql);
+            createTablePstmt.executeUpdate();
+            createTablePstmt.close();
+
+
+
+
 
             clearPstmt.close();
             connection.close();
@@ -921,6 +1010,40 @@ public class GroupController implements Initializable {
                 }
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    /**
+     * Click Register Btn and jump to Registeration Page
+     */
+    @FXML
+    public void goToRegisterPage() {
+
+        try {
+
+            /**
+             * 加载面板
+             */
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/groupConfiguration.fxml"));
+
+            /**
+             * 生成控制器
+             */
+            LeagueController controller = new LeagueController();
+            loader.setController(controller);
+
+            /**
+             * 显示面板
+             */
+            Parent root = (Parent) loader.load();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

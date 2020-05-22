@@ -65,7 +65,7 @@ public class TopShotterController implements Initializable {
 
         rankColumn.setCellValueFactory(new PropertyValueFactory<>("rank"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        teamColumn.setCellValueFactory(new PropertyValueFactory<>("team"));
+        teamColumn.setCellValueFactory(new PropertyValueFactory<>("club"));
         totalGoalsColumn.setCellValueFactory(new PropertyValueFactory<>("goals"));
         normalGoalsColumn.setCellValueFactory(new PropertyValueFactory<>("NG"));
         positionKickColumn.setCellValueFactory(new PropertyValueFactory<>("PK"));
