@@ -37,7 +37,6 @@
                         <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="90.0" minHeight="6.0" prefHeight="43.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
                             </rowConstraints>
@@ -102,24 +101,18 @@
                            </font>
                         </Text>
                                 <TextField fx:id="textFouls" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Club" GridPane.rowIndex="10">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                                <TextField fx:id="textClub" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Height" GridPane.rowIndex="11">
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Height" GridPane.rowIndex="10">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="textHeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Weight" GridPane.rowIndex="12">
+                                <TextField fx:id="textHeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Weight" GridPane.rowIndex="11">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="textWeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                <TextField fx:id="textWeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                             </children>
                         </GridPane>
                         <Text fill="#0091ea" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Information: ">
@@ -141,11 +134,22 @@
                         </TableView>
                   <Button fx:id="teamAddBtn" layoutX="182.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#teamAddAction" prefHeight="27.0" prefWidth="64.0" style="-fx-background-color: #7f17ff" text="Add" textFill="WHITE" />
                   <Button fx:id="teamDeleteBtn" layoutX="297.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#teamDeleteAction" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #f57c00" text="Delete" textFill="WHITE" />
-                  <Button id="UpdateBtn" fx:id="teamUpdateBtn" layoutX="485.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#teamUpdateAction" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: #3007ff;" text="Update" textFill="WHITE">
+                  <Button id="UpdateBtn" fx:id="teamUpdateBtn" layoutX="485.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#teamUpdateAction" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: #3007ff;" text="Update" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Button>
+                  <Button id="refreshTableBtn" fx:id="refreshTableBtn" layoutX="638.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#refreshTableAction" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: #4234ff;" text="Refresh" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button id="reloadBtn" fx:id="reloadBtn" layoutX="791.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#reloadAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: #f417c5#f417c5;" text="Reload" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button id="makeSomePlayerDataBtn" fx:id="makeSomePlayerDataBtn" layoutX="931.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#makeSomePlayerDataAction" prefHeight="27.0" prefWidth="143.0" style="-fx-background-color: #3423ff;" text="MakeSomePlayerData" textFill="WHITE" />
                     </children>
                 </AnchorPane>
          </left>

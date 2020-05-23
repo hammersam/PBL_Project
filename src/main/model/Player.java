@@ -6,19 +6,12 @@ package main.model;
  */
 public class Player {
 
-    /**
+    /** {{{
+     *
      * 球衣号码
      */
     private int ID;
 
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
 
     /**
      * 射手榜排名
@@ -68,10 +61,6 @@ public class Player {
     private int OG = 0;
 
     /**
-     *
-     */
-
-    /**
      * 球员犯规数
      */
     private int Fouls = 0;
@@ -92,6 +81,11 @@ public class Player {
      * 球员体重
      */
     private Double weight;
+
+    /**
+     * }}}
+     *
+     */
 
 
 
@@ -218,4 +212,11 @@ public class Player {
         this.weight = weight;
     }
 
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
 }

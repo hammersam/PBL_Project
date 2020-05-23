@@ -19,7 +19,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.IllegalFormatPrecisionException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -51,6 +50,7 @@ public class ScheduleController implements Initializable {
      *
      */
 
+
     /**
      * Competition Btn {{{
      *
@@ -66,29 +66,34 @@ public class ScheduleController implements Initializable {
      *
      */
 
+
+    /**
+     * 与数据库连接
+     */
+    private DBConnection dc;
+
+
+    /**
+     * 用于显示在TableView上的容器
+     */
+    private ObservableList<Record> list;
+
+
+    /**
+     * 所属的Group
+     */
+    private Group group;
+
+
     public ObservableList<Record> getList() {
         return list;
     }
+
 
     public void setList(ObservableList<Record> list) {
         this.list = list;
     }
 
-    private DBConnection dc;
-
-    private ObservableList<Record> list;
-
-    private Group group;
-
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
-    private String groupName;
 
     public Group getGroup() {
         return group;
@@ -99,20 +104,16 @@ public class ScheduleController implements Initializable {
         this.group = group;
     }
 
+
     public ScheduleController(ObservableList<Record> list, Group group) {
         setList(list);
         setGroup(group);
     }
 
-    public ScheduleController(ObservableList<Record> list, String groupName) {
-        setList(list);
-        setGroupName(groupName);
-    }
 
     public ScheduleController(ObservableList<Record> list) {
         setList(list);
     }
-
 
 
     public void doGroupMatch() {
@@ -315,7 +316,6 @@ public class ScheduleController implements Initializable {
             /**
              * 获取数据库中的队伍数据
              */
-            System.out.println(groupName);
             String getTeamDataSql = "SELECT * FROM `" + group.getName() + "` WHERE ID >= 1";
             ResultSet teamDataRs = connection.createStatement().executeQuery(getTeamDataSql);
 

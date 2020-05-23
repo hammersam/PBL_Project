@@ -1,21 +1,9 @@
 package main.model;
 
-import javafx.beans.property.StringProperty;
-
-import java.util.Arrays;
-
 /**
- * 小组
+ * 小组（一个联盟有四个小组GroupA, GroupB, GroupC, GroupD）
  */
 public class Group {
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
 
     /**
      * 小组在league中的编号
@@ -289,12 +277,12 @@ public class Group {
         return this.fieldB.getFieldName();
     }
 
-    @Override
-    public String toString() {
-        return "Group{" +
-                "name='" + name + '\'' +
-                ", group=" + Arrays.toString(group) +
-                '}';
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
 }

@@ -60,6 +60,7 @@ public class TopTeamController implements Initializable {
         return teamRecord;
     }
 
+
     public void setTeamRecord(ObservableList<Team> teamRecord) {
         this.teamRecord = teamRecord;
     }
@@ -67,11 +68,10 @@ public class TopTeamController implements Initializable {
 
     public TopTeamController(ObservableList<Team> records) {
         setTeamRecord(records);
-
     }
 
     /**
-     * 小组
+     * 用于显示在面板在Team容器
      */
     private ObservableList<Team> teamRecord;
 
@@ -97,4 +97,6 @@ public class TopTeamController implements Initializable {
         topTeamTable.setItems(teamRecord);
 
     }
+
+
 }

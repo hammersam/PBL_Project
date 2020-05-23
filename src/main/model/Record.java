@@ -6,7 +6,7 @@ package main.model;
 public class Record {
 
     /**
-     * 一场比赛记录由两支队伍、一个主裁判、两个辅助裁判、一块场地、两支队伍的进球得分组成
+     * 一场比赛记录由两支队伍、一个主裁判、两个辅助裁判、一块场地、两支队伍的进球得分组成（因为是单循环，故没有主客场）
      */
     private Team teamA;
 
@@ -27,6 +27,11 @@ public class Record {
     private String stage;
 
     private String situation;
+
+    /**
+     * }}}
+     *
+     */
 
     public Record(Team teamA, Team teamB, Referee referee, RefereeAssistant refereeAssistantA,
                   RefereeAssistant refereeAssistantB, Field field, int aPoints, int bPoints, String stage) {

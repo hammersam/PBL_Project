@@ -18,7 +18,7 @@
             <top>
                 <AnchorPane prefHeight="0.0" prefWidth="1238.0" BorderPane.alignment="CENTER" />
             </top>
-         <left>
+         <center>
                 <AnchorPane prefHeight="738.0" prefWidth="1206.0" BorderPane.alignment="CENTER">
                     <children>
                         <Text fill="#0091ea" layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group Information: ">
@@ -163,9 +163,19 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
+                  <Button id="makeSomePlayerDataBtn" fx:id="makeSomePlayerDataBtn" layoutX="304.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#makeSomePlayerForTeam" style="-fx-background-color: #423aff;" text="MakeSomePlayerDate" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Text layoutX="18.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click this button you will get some player date for team that you just register :)" wrappingWidth="475.29931640625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
                     </children>
                 </AnchorPane>
-         </left>
+         </center>
         </BorderPane>
     </children>
 </AnchorPane>

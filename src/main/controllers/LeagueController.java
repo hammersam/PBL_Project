@@ -6,31 +6,48 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import main.dao.DBConnection;
 import main.model.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LeagueController implements Initializable {
 
+
+    /**
+     * league name
+     */
     private String league;
 
+
+    /**
+     * connection of database
+     */
     private DBConnection dc;
+
 
     public String getLeague() {
         return league;
     }
+
 
     public void setLeague(String league) {
         this.league = league;
@@ -71,6 +88,7 @@ public class LeagueController implements Initializable {
     /**
      * }}}
      */
+
 
     /**
      * TableView {{{
@@ -119,6 +137,7 @@ public class LeagueController implements Initializable {
      * }}}
      */
 
+
     /**
      * Button {{{
      */
@@ -130,6 +149,9 @@ public class LeagueController implements Initializable {
 
     @FXML
     private Button reloadBtn;
+
+    @FXML
+    private Button updateGroupInfoBtn;
 
     /**
      * }}}
@@ -236,6 +258,94 @@ public class LeagueController implements Initializable {
         }
     }
 
+
+    @FXML
+    public void configDetail(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            try {
+
+                /**
+                 * 获取被双击的对象
+                 */
+                String groupName = configTableView.getSelectionModel().getSelectedItem().getName();
+                GroupController controller = new GroupController(groupName);
+
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/group.fxml"));
+                loader.setController(controller);
+                Parent root = (Parent) loader.load();
+                stage.setScene(new Scene(root));
+
+                stage.show();
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+            }
+
+
+        }
+
+    }
+
+
+    @FXML
+    public void updateGroupInfoAction() {
+        try {
+            Group group = configTableView.getSelectionModel().getSelectedItem();
+            String groupName = group.getName();
+            if (groupName != "") {
+
+                Connection connection = dc.connection();
+
+                String getGroupInfoSql = "SELECT * FROM League WHERE Name = '" + groupName + "'";
+                ResultSet getGroupInfoRs = connection.createStatement().executeQuery(getGroupInfoSql);
+                getGroupInfoRs.next();
+
+                System.out.println(getGroupInfoSql);
+                System.out.println(getGroupInfoRs.getString(6));
+                System.out.println(getGroupInfoRs.getString(7));
+                System.out.println(getGroupInfoRs.getString(8));
+                System.out.println(getGroupInfoRs.getString(9));
+                System.out.println(getGroupInfoRs.getString(10));
+                System.out.println(getGroupInfoRs.getString(11));
+                System.out.println(getGroupInfoRs.getString(12));
+                System.out.println(getGroupInfoRs.getString(13));
+
+
+                String updateRefereeA = ((Objects.equals(setRefereeA.getText(), "")) ? getGroupInfoRs.getString(6) : setRefereeA.getText());
+                String updateRefereeB = ((Objects.equals(setRefereeB.getText(), "")) ? getGroupInfoRs.getString(7) : setRefereeB.getText());
+                String updateRAA = ((Objects.equals(setRefereeAssistantA.getText(), "")) ? getGroupInfoRs.getString(8) : setRefereeAssistantA.getText());
+                String updateRAB = ((Objects.equals(setRefereeAssistantB.getText(), "")) ? getGroupInfoRs.getString(9) : setRefereeAssistantB.getText());
+                String updateRAC = ((Objects.equals(setRefereeAssistantC.getText(), "")) ? getGroupInfoRs.getString(10) : setRefereeAssistantC.getText());
+                String updateRAD = ((Objects.equals(setRefereeAssistantD.getText(), "")) ? getGroupInfoRs.getString(12) : setRefereeAssistantD.getText());
+                String updateFieldA = ((Objects.equals(setFieldA.getText(), "")) ? getGroupInfoRs.getString(12) : setFieldA.getText());
+                String updateFieldB = ((Objects.equals(setFieldB.getText(), "")) ? getGroupInfoRs.getString(13) : setFieldB.getText());
+
+                System.out.println("updateRefereeA: " + updateRefereeA + " updateRefereeB: " + updateRefereeB);
+
+                String updateSql = "UPDATE League SET RefereeA = '" + updateRefereeA + "', RefereeB = '" + updateRefereeB + "', " +
+                        "RefereeAssistantA = '" + updateRAA + "', RefereeAssistantB = '" + updateRAB + "', RefereeAssistantC = '" + updateRAC + "', RefereeAssistantD = '" +
+                        updateRAD + "', FieldA = '" + updateFieldA + "', FieldB = '" + updateFieldB + "' WHERE League.Name = '" + groupName + "'";
+                PreparedStatement updatePstmt = connection.prepareStatement(updateSql);
+                updatePstmt.executeUpdate();
+                updatePstmt.close();
+
+                update(connection);
+                connection.close();
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+
     /**
      * 每次删除或者添加球队记录，则重新载入球队记录
      *
@@ -290,7 +400,7 @@ public class LeagueController implements Initializable {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Group, String> groupStringCellDataFeatures) {
                 StringProperty sp = new SimpleStringProperty();
-                sp.setValue(groupStringCellDataFeatures.getValue().getFieldBName());
+                sp.setValue(groupStringCellDataFeatures.getValue().getRefereeBName());
                 return sp;
             }
         });

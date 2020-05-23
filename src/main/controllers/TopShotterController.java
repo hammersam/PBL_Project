@@ -46,19 +46,27 @@ public class TopShotterController implements Initializable {
      *
      */
 
+
+    /**
+     * 用于显示Player的容器
+     */
+    private ObservableList<Player> list;
+
+
+    public TopShotterController(ObservableList<Player> list) {
+        setList(list);
+    }
+
+
     public ObservableList<Player> getList() {
         return list;
     }
+
 
     public void setList(ObservableList<Player> list) {
         this.list = list;
     }
 
-    private ObservableList<Player> list;
-
-    public TopShotterController(ObservableList<Player> list) {
-        setList(list);
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

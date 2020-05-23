@@ -1,9 +1,7 @@
 package main.controllers;
 
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +17,7 @@ import main.model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -132,10 +131,25 @@ public class GroupController implements Initializable {
 
     @FXML
     private Button registerBtn;
+
+    @FXML
+    private Button makeSomePlayerDataBtn;
     /**
      * }}}
      *
      */
+
+
+    /**
+     * get connection of database
+     */
+    private DBConnection dc;
+
+
+    /**
+     * 所属Group的名字
+     */
+    private String dbText;
 
 
     public String getDbText() {
@@ -148,16 +162,9 @@ public class GroupController implements Initializable {
     }
 
 
-    /**
-     * get connection of database
-     */
-    private DBConnection dc;
 
-
-    private String dbText;
-
-
-    public GroupController() {
+    public GroupController(String dbText) {
+        setDbText(dbText);
 
     }
 
@@ -244,8 +251,7 @@ public class GroupController implements Initializable {
             /**
              * 生成controller
              */
-            TeamController team = new TeamController();
-            team.setDbText(teamName);
+            TeamController team = new TeamController(teamName);
             loader.setController(team);
 
             /**
@@ -551,16 +557,16 @@ public class GroupController implements Initializable {
 
 
             /**
-             * 未输入的数据项则不更新，输入的数据项加上已有的数据形成新的数据项
+             * 如果输入框为空，则显示前有数据
              */
-            int updatePlayed = textPlayed.getText() == "" ? team.getPlayed() : Integer.parseInt(textPlayed.getText()) + team.getPlayed();
-            int updateWon = textWon.getText() == "" ? team.getWon() : Integer.parseInt(textWon.getText()) + team.getWon();
-            int updateDrawn = textDrawn.getText() == "" ? team.getDrawn() : Integer.parseInt(textDrawn.getText()) + team.getDrawn();
-            int updateLost = textLost.getText() == "" ? team.getLost() : Integer.parseInt(textLost.getText()) + team.getLost();
-            int updateGF = textGF.getText() == "" ? team.getGF() : Integer.parseInt(textGF.getText()) + team.getGF();
-            int updateGA = textGA.getText() == "" ? team.getGA() : Integer.parseInt(textGA.getText()) + team.getGA();
-            int updateGD = textGD.getText() == "" ? team.getGD() : Integer.parseInt(textGD.getText()) + team.getGD();
-            int updatePoints = textPoints.getText() == "" ? team.getPoints() : Integer.parseInt(textPoints.getText()) + team.getPoints();
+            int updatePlayed = Objects.equals(textPlayed.getText(), "") ? team.getPlayed() : Integer.parseInt(textPlayed.getText());
+            int updateWon = Objects.equals(textWon.getText(), "") ? team.getWon() : Integer.parseInt(textWon.getText());
+            int updateDrawn = Objects.equals(textDrawn.getText(), "") ? team.getDrawn() : Integer.parseInt(textDrawn.getText());
+            int updateLost = Objects.equals(textLost.getText(), "") ? team.getLost() : Integer.parseInt(textLost.getText());
+            int updateGF = Objects.equals(textGF.getText(), "") ? team.getGF() : Integer.parseInt(textGF.getText());
+            int updateGA = Objects.equals(textGA.getText(), "") ? team.getGA() : Integer.parseInt(textGA.getText());
+            int updateGD = Objects.equals(textGD.getText(), "") ? team.getGD() : Integer.parseInt(textGD.getText());
+            int updatePoints = Objects.equals(textPoints.getText(), "") ? team.getPoints() : Integer.parseInt(textPoints.getText());
 
 
             /**
@@ -961,6 +967,8 @@ public class GroupController implements Initializable {
             createTablePstmt.close();
 
 
+            update(connection);
+
 
 
 
@@ -989,11 +997,12 @@ public class GroupController implements Initializable {
 
     }
 
-    public void makeSomePlayerForTeam(Connection conn) {
+    @FXML
+    public void makeSomePlayerForTeam() {
 
         try {
 
-            Connection connection = conn;
+            Connection connection = dc.connection();
             String getTeamSql = "SELECT * FROM `" + dbText + "` WHERE ID >= 1";
             ResultSet teamResult = connection.createStatement().executeQuery(getTeamSql);
 
@@ -1004,7 +1013,7 @@ public class GroupController implements Initializable {
                 /**
                  * 丢弃球队表 {{{
                  */
-                String dropSql = "DROP TABLE `" + teamName + "`";
+                String dropSql = "DROP TABLE IF EXISTS `" + teamName + "`";
                 PreparedStatement dropPlayerPstmt = connection.prepareStatement(dropSql);
                 dropPlayerPstmt.executeUpdate();
 
@@ -1082,7 +1091,7 @@ public class GroupController implements Initializable {
              * 加载面板
              */
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/groupConfiguration.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/League.fxml"));
 
             /**
              * 生成控制器
@@ -1185,9 +1194,6 @@ public class GroupController implements Initializable {
         try {
             dc = new DBConnection();
             Connection connection = dc.connection();
-
-
-
 
 
             /**

@@ -42,19 +42,28 @@ public class PlayerProfileController implements Initializable {
      *
      */
 
+
+    /**
+     * @Player
+     *
+     */
+    private Player player;
+
+
     public Player getPlayer() {
         return player;
     }
+
 
     public void setPlayer(Player player) {
         this.player = player;
     }
 
+
     public PlayerProfileController(Player player) {
         setPlayer(player);
     }
 
-    private Player player;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,7 +75,5 @@ public class PlayerProfileController implements Initializable {
         Height.setText("" + player.getHeight());
         Weight.setText("" + player.getWeight());
         Club.setText("" + player.getClub());
-
-
     }
 }

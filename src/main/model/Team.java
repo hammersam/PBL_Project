@@ -5,7 +5,8 @@ package main.model;
  */
 public class Team {
 
-    /**
+    /** {{{
+     *
      * 球队名称
      */
     private String name;
@@ -47,7 +48,13 @@ public class Team {
 
     private int GD = 0;
 
+    /**
+     * }}}
+     */
+
+
     public Team() {}
+
 
     public Team(int ID, String name, int played, int won, int drawn, int lost, int GF, int GA, int GD, int points) {
         setID(ID);
@@ -62,104 +69,130 @@ public class Team {
         setPoints(points);
     }
 
+
     public Team(String name) {
         setName(name);
     }
+
 
     public String getName() {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
+
 
     public Player[] getTeam() {
         return team;
     }
 
+
     public void setTeam(Player[] team) {
         this.team = team;
     }
+
 
     public int getPoints() {
         return points;
     }
 
+
     public void setPoints(int points) {
         this.points = points;
     }
+
 
     public int getID() {
         return ID;
     }
 
+
     public void setID(int ID) {
         this.ID = ID;
     }
+
 
     public int getRank() {
         return rank;
     }
 
+
     public void setRank(int rank) {
         this.rank = rank;
     }
+
 
     public int getPlayed() {
         return played;
     }
 
+
     public void setPlayed(int played) {
         this.played = played;
     }
+
 
     public int getWon() {
         return won;
     }
 
+
     public void setWon(int won) {
         this.won = won;
     }
+
 
     public int getDrawn() {
         return drawn;
     }
 
+
     public void setDrawn(int drawn) {
         this.drawn = drawn;
     }
+
 
     public int getLost() {
         return lost;
     }
 
+
     public void setLost(int lost) {
         this.lost = lost;
     }
+
 
     public int getGF() {
         return GF;
     }
 
+
     public void setGF(int GF) {
         this.GF = GF;
     }
+
 
     public int getGA() {
         return GA;
     }
 
+
     public void setGA(int GA) {
         this.GA = GA;
     }
+
 
     public int getGD() {
         return GD;
     }
 
+
     public void setGD(int GD) {
         this.GD = GD;
     }
+
 }
 
