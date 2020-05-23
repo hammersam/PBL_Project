@@ -119,11 +119,21 @@ public class LeagueController implements Initializable {
      * }}}
      */
 
+    /**
+     * Button {{{
+     */
     @FXML
     private Button addGroupBtn;
 
     @FXML
     private Button deleteGroupBtn;
+
+    @FXML
+    private Button reloadBtn;
+
+    /**
+     * }}}
+     */
 
 
     @FXML
@@ -208,6 +218,24 @@ public class LeagueController implements Initializable {
         }
     }
 
+    @FXML
+    public void reloadAction() {
+
+        try {
+
+            Connection connection = dc.connection();
+
+            update(connection);
+
+            connection.close();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+    }
+
     /**
      * 每次删除或者添加球队记录，则重新载入球队记录
      *
@@ -223,6 +251,30 @@ public class LeagueController implements Initializable {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Group, String> groupStringCellDataFeatures) {
                 StringProperty sp = new SimpleStringProperty();
                 sp.setValue(groupStringCellDataFeatures.getValue().getName());
+                return sp;
+            }
+        });
+        columnFirstPlace.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Group, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Group, String> groupStringCellDataFeatures) {
+                StringProperty sp = new SimpleStringProperty();
+                sp.setValue(groupStringCellDataFeatures.getValue().getFirst_place().getName());
+                return sp;
+            }
+        });
+        columnSecondPlace.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Group, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Group, String> groupStringCellDataFeatures) {
+                StringProperty sp = new SimpleStringProperty();
+                sp.setValue(groupStringCellDataFeatures.getValue().getSecond_place().getName());
+                return sp;
+            }
+        });
+        columnThirdPlace.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Group, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Group, String> groupStringCellDataFeatures) {
+                StringProperty sp = new SimpleStringProperty();
+                sp.setValue(groupStringCellDataFeatures.getValue().getThird_place().getName());
                 return sp;
             }
         });
@@ -344,7 +396,11 @@ public class LeagueController implements Initializable {
                 Field fieldA = new Field(rs.getString(12));
                 Field fieldB = new Field(rs.getString(13));
 
-                Group group = new Group(rs.getInt(1), rs.getString(2), refereeA, refereeB, refereeAssistantA, refereeAssistantB, refereeAssistantC, refereeAssistantD, fieldA, fieldB);
+                Team first_place = new Team(rs.getString(3));
+                Team second_place = new Team(rs.getString(4));
+                Team third_place = new Team(rs.getString(5));
+
+                Group group = new Group(rs.getInt(1), rs.getString(2), first_place, second_place, third_place, refereeA, refereeB, refereeAssistantA, refereeAssistantB, refereeAssistantC, refereeAssistantD, fieldA, fieldB);
 
                 data.add(group);
             }

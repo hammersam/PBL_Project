@@ -1,5 +1,7 @@
 package main.model;
 
+import javafx.beans.property.StringProperty;
+
 import java.util.Arrays;
 
 /**
@@ -66,7 +68,7 @@ public class Group {
     private Field fieldB;
 
     public Group(int id, String name, Referee refereeA, Referee refereeB, RefereeAssistant refereeAssistantA, RefereeAssistant refereeAssistantB, RefereeAssistant refereeAssistantC,
-                 RefereeAssistant refereeAssistantD, Field fieldA, Field fieldB) {
+                 RefereeAssistant refereeAssistantD, Field fieldA, Field fieldB, String stage) {
         setID(id);
         setName(name);
         setRefereeA(refereeA);
@@ -77,6 +79,7 @@ public class Group {
         setRefereeAssistantD(refereeAssistantD);
         setFieldA(fieldA);
         setFieldB(fieldB);
+        setStage(stage);
 
     }
 
@@ -92,6 +95,24 @@ public class Group {
         setFieldA(fieldA);
         setFieldB(fieldB);
 
+    }
+
+
+    public Group(int id, String name, Team first_place, Team second_place, Team third_place, Referee refereeA, Referee refereeB, RefereeAssistant refereeAssistantA, RefereeAssistant refereeAssistantB, RefereeAssistant refereeAssistantC,
+                 RefereeAssistant refereeAssistantD, Field fieldA, Field fieldB) {
+        setID(id);
+        setName(name);
+        setFirst_place(first_place);
+        setSecond_place(second_place);
+        setThird_place(third_place);
+        setRefereeA(refereeA);
+        setRefereeB(refereeB);
+        setRefereeAssistantA(refereeAssistantA);
+        setRefereeAssistantB(refereeAssistantB);
+        setRefereeAssistantC(refereeAssistantC);
+        setRefereeAssistantD(refereeAssistantD);
+        setFieldA(fieldA);
+        setFieldB(fieldB);
     }
 
     public Group(String name, Team[] group) {

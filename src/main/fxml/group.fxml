@@ -143,7 +143,7 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button id="renewBtn" fx:id="renewBtn" layoutX="838.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#renewGroupAction" prefHeight="34.0" prefWidth="99.0" style="-fx-background-color: #4234ff;" text="Renew" textFill="#fcfafa">
+                  <Button id="reloadBtn" fx:id="reloadBtn" layoutX="838.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#reloadGroupAction" prefHeight="34.0" prefWidth="99.0" style="-fx-background-color: #4234ff;" text="Reload" textFill="#fcfafa">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -158,7 +158,7 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button id="registerBtn" fx:id="registerBtn" onMouseClicked="#goToRegisterPage" layoutX="214.0" layoutY="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: #9809ff;" text="Register" textFill="WHITE">
+                  <Button id="registerBtn" fx:id="registerBtn" layoutX="214.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#goToRegisterPage" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: #9809ff;" text="Register" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>

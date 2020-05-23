@@ -1,5 +1,6 @@
 package main.controllers;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -124,7 +125,7 @@ public class GroupController implements Initializable {
     private Button scheduleBtn;
 
     @FXML
-    private Button renewBtn;
+    private Button reloadBtn;
 
     @FXML
     private Button showScheduleBtn;
@@ -624,7 +625,7 @@ public class GroupController implements Initializable {
             /**
              * 实例化一个group
              */
-            Group group = new Group(groupRS.getInt(1), groupRS.getString(2), refereeA, refereeB, refereeAssistantA, refereeAssistantB, refereeAssistantC, refereeAssistantD, fieldA, fieldB);
+            Group group = new Group(groupRS.getInt(1), groupRS.getString(2), refereeA, refereeB, refereeAssistantA, refereeAssistantB, refereeAssistantC, refereeAssistantD, fieldA, fieldB, "GroupMatch");
             Team[] teams = new Team[16];
 
             /**
@@ -757,6 +758,8 @@ public class GroupController implements Initializable {
             ScheduleController team = new ScheduleController(list, group);
             loader.setController(team);
 
+
+            System.out.println("GroupName is " + group.getName());
             /**
              * normal rice
              */
@@ -779,8 +782,59 @@ public class GroupController implements Initializable {
 
         try {
 
-            ObservableList<Record> list = FXCollections.observableArrayList();
             Connection connection = dc.connection();
+
+            /**
+             * 获取有关Group的信息
+             */
+            String sql = "SELECT * FROM `League` WHERE `ID` >= 1";
+            ResultSet groupRS = connection.createStatement().executeQuery(sql);
+            groupRS.next();
+
+            /**
+             * 从数据库中获取数据并创建Group实例，并添加到data中
+             */
+            RefereeAssistant refereeAssistantA = new RefereeAssistant(groupRS.getString(8));
+            RefereeAssistant refereeAssistantB = new RefereeAssistant(groupRS.getString(9));
+            RefereeAssistant refereeAssistantC = new RefereeAssistant(groupRS.getString(10));
+            RefereeAssistant refereeAssistantD = new RefereeAssistant(groupRS.getString(11));
+
+            Referee refereeA = new Referee(groupRS.getString(6), refereeAssistantA, refereeAssistantB);
+            Referee refereeB = new Referee(groupRS.getString(7), refereeAssistantC, refereeAssistantD);
+
+            Field fieldA = new Field(groupRS.getString(12));
+            Field fieldB = new Field(groupRS.getString(13));
+
+            /**
+             * 实例化一个group
+             */
+            Group group = new Group(groupRS.getInt(1), groupRS.getString(2), refereeA, refereeB, refereeAssistantA, refereeAssistantB, refereeAssistantC, refereeAssistantD, fieldA, fieldB, "GroupMatch");
+            Team[] teams = new Team[16];
+
+            /**
+             * 获取数据库中的队伍数据
+             */
+            String getTeamSql = "SELECT * FROM " + dbText + " WHERE ID >= 1";
+
+            /**
+             * 获取ResultSet
+             */
+            ResultSet teamRS = connection.createStatement().executeQuery(getTeamSql);
+
+            /**
+             * 输入队伍数据
+             */
+            for (int i = 0; i < 16 && teamRS.next(); i++) {
+                teams[i] = new Team(teamRS.getInt(1), teamRS.getString(2), teamRS.getInt(3), teamRS.getInt(4), teamRS.getInt(5),
+                        teamRS.getInt(6), teamRS.getInt(7), teamRS.getInt(8), teamRS.getInt(9), teamRS.getInt(10));
+            }
+
+            group.setGroup(teams);
+
+
+
+
+            ObservableList<Record> list = FXCollections.observableArrayList();
             /**
              * 获取数据库中record数据
              */
@@ -803,7 +857,7 @@ public class GroupController implements Initializable {
 
             }
 
-            ScheduleController controller = new ScheduleController(list);
+            ScheduleController controller = new ScheduleController(list, group);
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/schedule.fxml"));
             loader.setController(controller);
@@ -822,7 +876,7 @@ public class GroupController implements Initializable {
 
 
     @FXML
-    public void renewGroupAction() {
+    public void reloadGroupAction() {
         try {
 
             Connection connection = dc.connection();
@@ -1055,23 +1109,36 @@ public class GroupController implements Initializable {
      */
     public void update(Connection connection) {
 
-        String sql = "SELECT * FROM `" + dbText + "` WHERE `ID` >= 1";
+        try {
 
-        columnID.setCellValueFactory(new PropertyValueFactory<>("ID"));
-        columnName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        columnPlayed.setCellValueFactory(new PropertyValueFactory<>("Played"));
-        columnWon.setCellValueFactory(new PropertyValueFactory<>("Won"));
-        columnDrawn.setCellValueFactory(new PropertyValueFactory<>("Drawn"));
-        columnLost.setCellValueFactory(new PropertyValueFactory<>("Lost"));
-        columnGF.setCellValueFactory(new PropertyValueFactory<>("GF"));
-        columnGA.setCellValueFactory(new PropertyValueFactory<>("GA"));
-        columnGD.setCellValueFactory(new PropertyValueFactory<>("GD"));
-        columnPoints.setCellValueFactory(new PropertyValueFactory<>("Points"));
+            String sql = "SELECT * FROM `" + dbText + "` WHERE `ID` >= 1";
 
-        // System.out.printf("location: " + location.toString()  + " resources: " + resources.toString());
+            columnID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            columnName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+            columnPlayed.setCellValueFactory(new PropertyValueFactory<>("Played"));
+            columnWon.setCellValueFactory(new PropertyValueFactory<>("Won"));
+            columnDrawn.setCellValueFactory(new PropertyValueFactory<>("Drawn"));
+            columnLost.setCellValueFactory(new PropertyValueFactory<>("Lost"));
+            columnGF.setCellValueFactory(new PropertyValueFactory<>("GF"));
+            columnGA.setCellValueFactory(new PropertyValueFactory<>("GA"));
+            columnGD.setCellValueFactory(new PropertyValueFactory<>("GD"));
+            columnPoints.setCellValueFactory(new PropertyValueFactory<>("Points"));
 
-        tableUser.setItems(null);
-        tableUser.setItems(loadDataFromDatabase(sql, connection));
+            // System.out.printf("location: " + location.toString()  + " resources: " + resources.toString());
+
+            tableUser.setItems(null);
+            tableUser.setItems(loadDataFromDatabase(sql, connection));
+
+            String renewRegister = "UPDATE `League` SET First_Place = '', Second_Place = '', Third_Place = '' WHERE Name = '" + dbText + "'";
+            PreparedStatement renewRegisterPstmt = connection.prepareStatement(renewRegister);
+            renewRegisterPstmt.executeUpdate();
+            renewRegisterPstmt.close();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
 
         /**
          * 输入之后将TextField设置为空
