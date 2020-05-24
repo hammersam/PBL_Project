@@ -35,84 +35,77 @@
                         <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="   ID" wrappingWidth="65.77197265625">
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Name">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="textID" GridPane.columnIndex="1" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Name" GridPane.rowIndex="1">
+                        <TextField fx:id="textName" disable="false" GridPane.columnIndex="1" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Age" GridPane.rowIndex="1">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="textName" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Age" GridPane.rowIndex="2">
+                        <TextField fx:id="textAge" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Gender" GridPane.rowIndex="2">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="textAge" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Gender" GridPane.rowIndex="3">
+                        <TextField fx:id="textGender" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Position" GridPane.rowIndex="3">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="textGender" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Position" GridPane.rowIndex="4">
+                        <TextField fx:id="textPosition" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Goals" GridPane.rowIndex="4">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="textPosition" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Goals" GridPane.rowIndex="5">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="textGoals" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Fouls" GridPane.rowIndex="9">
+                        <TextField fx:id="textGoals" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Fouls" GridPane.rowIndex="8">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Text>
-                        <TextField fx:id="textNG" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  NG" wrappingWidth="65.77197265625" GridPane.rowIndex="6">
+                        <TextField fx:id="textNG" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  NG" wrappingWidth="65.77197265625" GridPane.rowIndex="5">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="textPK" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  PK" wrappingWidth="65.77197265625" GridPane.rowIndex="7">
+                        <TextField fx:id="textPK" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  PK" wrappingWidth="65.77197265625" GridPane.rowIndex="6">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="textOG" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  OG" wrappingWidth="65.77197265625" GridPane.rowIndex="8">
+                        <TextField fx:id="textOG" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  OG" wrappingWidth="65.77197265625" GridPane.rowIndex="7">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                                <TextField fx:id="textFouls" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Height" GridPane.rowIndex="10">
+                                <TextField fx:id="textFouls" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Height" GridPane.rowIndex="9">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="textHeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Weight" GridPane.rowIndex="11">
+                                <TextField fx:id="textHeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="  Weight" GridPane.rowIndex="10">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="textWeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                <TextField fx:id="textWeight" disable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                             </children>
                         </GridPane>
                         <Text fill="#0091ea" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Information: ">

@@ -63,8 +63,6 @@ public class TeamController implements Initializable {
      * textInput {{{
      */
 
-    @FXML
-    private TextField textID;
 
     @FXML
     private TextField textName;
@@ -325,28 +323,26 @@ public class TeamController implements Initializable {
     public void teamAddAction() {
         Connection connection = dc.connection();
 
-        String addSql = "insert into `" + dbText + "`(ID, Name, Age, Gender, Position, Goals, NG, PK, OG, Fouls, Club, Height, Weight)" +
-                " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String addSql = "insert into `" + dbText + "`(Name, Age, Gender, Position, Goals, NG, PK, OG, Fouls, Club, Height, Weight)" +
+                " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        System.out.println(textID.getText());
         try {
 
             PreparedStatement pstmt = connection.prepareStatement(addSql);
 
 
-            pstmt.setInt(1, Integer.parseInt(textID.getText()));
-            pstmt.setString(2, textName.getText());
-            pstmt.setInt(3, Integer.parseInt(textAge.getText()));
-            pstmt.setString(4, textGender.getText());
-            pstmt.setString(5, textPosition.getText());
-            pstmt.setInt(6, Integer.parseInt(textGoals.getText()));
-            pstmt.setInt(7, Integer.parseInt(textNG.getText()));
-            pstmt.setInt(8, Integer.parseInt(textPK.getText()));
-            pstmt.setInt(9, Integer.parseInt(textOG.getText()));
-            pstmt.setInt(10, Integer.parseInt(textFouls.getText()));
-            pstmt.setString(11, dbText);
-            pstmt.setDouble(12, Double.parseDouble(textHeight.getText()));
-            pstmt.setDouble(13, Double.parseDouble(textWeight.getText()));
+            pstmt.setString(1, textName.getText());
+            pstmt.setInt(2, Integer.parseInt(textAge.getText()));
+            pstmt.setString(3, textGender.getText());
+            pstmt.setString(4, textPosition.getText());
+            pstmt.setInt(5, Integer.parseInt(textGoals.getText()));
+            pstmt.setInt(6, Integer.parseInt(textNG.getText()));
+            pstmt.setInt(7, Integer.parseInt(textPK.getText()));
+            pstmt.setInt(8, Integer.parseInt(textOG.getText()));
+            pstmt.setInt(9, Integer.parseInt(textFouls.getText()));
+            pstmt.setString(10, dbText);
+            pstmt.setDouble(11, Double.parseDouble(textHeight.getText()));
+            pstmt.setDouble(12, Double.parseDouble(textWeight.getText()));
 
             pstmt.executeUpdate();
 
@@ -526,7 +522,6 @@ public class TeamController implements Initializable {
 
         String sql = "SELECT * FROM `" + dbText + "` WHERE `ID` >= 1";
 
-        columnID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         columnName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         columnPosition.setCellValueFactory(new PropertyValueFactory<>("Position"));
         columnGoals.setCellValueFactory(new PropertyValueFactory<>("Goals"));
@@ -543,7 +538,6 @@ public class TeamController implements Initializable {
         /**
          * 输入之后将TextField设置为空
          */
-        textID.clear();
         textName.clear();
         textAge.clear();
         textGender.clear();
@@ -591,7 +585,7 @@ public class TeamController implements Initializable {
              * 如何数据库中没有球队表，则创建
              */
             String checkSql = "CREATE TABLE IF NOT EXISTS `" + dbText + "` (" +
-                    "`ID` INT UNSIGNED NOT NULL," +
+                    "`ID` INT UNSIGNED AUTO_INCREMENT," +
                     "`Name` VARCHAR(100) NOT NULL," +
                     "`Age` INT UNSIGNED NOT NULL," +
                     "`Gender` VARCHAR(100) NOT NULL," +
@@ -613,7 +607,8 @@ public class TeamController implements Initializable {
             String sql = "SELECT * FROM `" + dbText + "` WHERE `ID` >= 1";
 
             /**
-             * 在输入栏右侧显示'ID', 'Name', 'Position', 'Goals', 'Fouls'
+             * 在输入栏右侧显示'Name', 'Position', 'Goals', 'Fouls'
+             *
              */
             columnID.setCellValueFactory(new PropertyValueFactory<>("ID"));
             columnName.setCellValueFactory(new PropertyValueFactory<>("Name"));
