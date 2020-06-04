@@ -1,3 +1,5 @@
 .DS_Store
 src/main/dao/ConstantValue.java
 out/
+reports/
+src/resources/
